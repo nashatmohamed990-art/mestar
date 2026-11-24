@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2563eb">
+<title>كراسة المستر — إدارة مجموعات اللغة العربية</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0f172a;--pri:#2563eb;--pri-s:#eff4ff;--paper:#fff;--bg:#f6f8fc;--line:#e2e8f0;--mute:#64748b;--ok:#16a34a;--bad:#dc2626;--sh:0 1px 2px rgba(15,23,42,.06),0 4px 14px rgba(15,23,42,.04)}
+@media(prefers-color-scheme:dark){:root{--ink:#e8edf6;--pri:#5b8def;--pri-s:#1a2a4a;--paper:#151c2b;--bg:#0d1220;--line:#27324a;--mute:#93a0b8;--ok:#4ade80;--bad:#f87171;--sh:none}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:'IBM Plex Sans Arabic',Tajawal,'Segoe UI',Tahoma,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px}
+.shell{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
+aside{background:var(--paper);border-inline-end:1px solid var(--line);padding:22px 14px;position:sticky;top:0;height:100vh}
+.brand{font-weight:700;font-size:1.25rem;padding:0 10px 18px;color:var(--pri);line-height:1.3}
+.brand small{display:block;color:var(--mute);font-weight:400;font-size:.8rem;margin-top:2px}
+nav{display:flex;flex-direction:column;gap:2px}
+nav button{font:inherit;font-weight:500;text-align:start;border:0;background:none;color:var(--mute);padding:9px 12px;border-radius:10px;cursor:pointer}
+nav button:hover{background:var(--bg)}
+nav button[aria-current=true]{background:var(--pri-s);color:var(--pri);font-weight:700}
+main{padding:28px 32px 90px;max-width:960px;width:100%}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--pri);outline-offset:2px}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.bar h2{margin:0;font-size:1.5rem;font-weight:700;flex:1;min-width:140px}
+.btn{font:inherit;font-weight:600;border:1px solid var(--pri);background:var(--pri);color:#fff;border-radius:10px;padding:7px 16px;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:var(--paper);color:var(--ink);border-color:var(--line)}
+.btn.red{background:none;border-color:transparent;color:var(--bad)}
+.btn.sm{padding:3px 12px;font-size:.88rem;border-radius:8px}
+input,select,textarea{font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--paper);color:var(--ink);width:100%}
+.bar input,.bar select{width:auto;min-width:150px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:26px}
+.stat{background:var(--paper);border:1px solid var(--line);padding:16px 18px;border-radius:14px;box-shadow:var(--sh)}
+.stat b{display:block;font-size:2rem;color:var(--pri);line-height:1.2}
+.stat span{color:var(--mute);font-size:.9rem}
+.list{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:var(--sh);overflow:hidden}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row .main{flex:1;min-width:200px}
+.row .main small{display:block;color:var(--mute);font-size:.88rem}
+.tag{display:inline-block;font-size:.78rem;padding:0 10px;border-radius:20px;background:#dcfce7;color:#166534;font-weight:600;vertical-align:middle}
+.tag.p{background:var(--pri-s);color:var(--pri)}
+@media(prefers-color-scheme:dark){.tag{background:#14351f;color:#86efac}}
+.empty{padding:30px;text-align:center;color:var(--mute)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:26px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:var(--sh)}
+.card h3{margin:0 0 2px;font-size:1.05rem}
+.card p{margin:2px 0;color:var(--mute);font-size:.9rem}
+dialog{border:0;border-radius:16px;padding:0;width:min(580px,94vw);background:var(--paper);color:var(--ink);max-height:90vh;box-shadow:0 20px 60px rgba(15,23,42,.35)}
+dialog::backdrop{background:rgba(15,23,42,.5)}
+.dh{padding:16px 20px;font-weight:700;font-size:1.1rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
+.db{padding:6px 20px 16px;overflow:auto;max-height:66vh}
+.db h3{font-size:1.05rem;margin:16px 0 6px}
+.df{padding:12px 20px;border-top:1px solid var(--line);display:flex;gap:8px;flex-direction:row}
+label{display:block;font-weight:600;margin:12px 0 4px;font-size:.9rem;color:var(--mute)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+table{width:100%;border-collapse:collapse}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:start}
+th{font-size:.82rem;color:var(--mute);font-weight:600;background:var(--bg)}
+.scores input{width:84px}.scores td,.scores th{white-space:nowrap}
+.ev select{width:64px;padding:4px 6px}
+.ev input.note{min-width:150px}
+.sc{overflow-x:auto}
+.pct{font-weight:700}
+.good{color:var(--ok)}.bad{color:var(--bad)}
+.sub{color:var(--mute);margin:-6px 0 14px}
+#toast{position:fixed;inset-inline:0;bottom:calc(84px + env(safe-area-inset-bottom,0));margin:auto;width:max-content;max-width:90vw;background:var(--ink);color:var(--paper);padding:8px 18px;border-radius:24px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:50}
+#toast.on{opacity:1}
+@media(max-width:760px){
+.shell{display:block}
+aside{position:fixed;inset:auto 0 0 0;top:auto;height:auto;padding:4px 6px calc(4px + env(safe-area-inset-bottom,0));border-inline-end:0;border-top:1px solid var(--line);z-index:20}
+.brand{display:none}
+nav{flex-direction:row;justify-content:space-around}
+nav button{flex:1;text-align:center;padding:8px 2px;font-size:.72rem;line-height:1.3;border-radius:8px}
+main{padding:18px 14px 100px}
+.two{grid-template-columns:1fr}
+.stat b{font-size:1.5rem}
+.bar h2{font-size:1.3rem}
+}
+@media print{body *{visibility:hidden}dialog,dialog *{visibility:visible}dialog{position:absolute;inset:0;box-shadow:none;width:100%;max-height:none}.df,.dh button{display:none}.db{max-height:none}}
+</style>
+</head>
+<body>
+<div class="shell"><aside><div class="brand">كراسة المستر<small>إدارة مجموعات اللغة العربية</small></div><nav id="nav"></nav></aside><main id="app"></main></div>
+<dialog id="dlg"></dialog>
+<div id="toast" role="status"></div>
+<script>
+const GRADES=['الصف الأول الابتدائي','الصف الثاني الابتدائي','الصف الثالث الابتدائي','الصف الرابع الابتدائي','الصف الخامس الابتدائي','الصف السادس الابتدائي','الصف الأول الإعدادي','الصف الثاني الإعدادي','الصف الثالث الإعدادي'];
+const KINDS=['مدرسة','درس خصوصي'];
+const CRIT=['القراءة','الكتابة والإملاء','النحو','التعبير','السلوك'];
+const ETYPES=['اختبار شهري','اختبار قصير','واجب','امتحان نصف الفصل','امتحان نهاية الفصل'];
+const TABS=[['home','الرئيسية'],['groups','المجموعات'],['students','الطلاب'],['exams','الامتحانات'],['evals','التقييم'],['data','النسخ']];
+const KEY='arabic-teacher-v1';
+let S={groups:[],students:[],exams:[],evals:[]},tab='home',flt={gv:'',g:'',q:'',eg:'',em:new Date().toISOString().slice(0,7)};
+try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r))}catch(e){}
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){toast('تعذّر الحفظ في المتصفح — حمّل نسخة احتياطية')}}
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),2200)}
+const grp=id=>S.groups.find(g=>g.id===id);
+const gname=id=>{const g=grp(id);return g?g.name:'بدون مجموعة'};
+const opts=(arr,sel)=>arr.map((x,i)=>`<option value="${esc(Array.isArray(x)?x[0]:x)}"${(Array.isArray(x)?x[0]:x)===sel?' selected':''}>${esc(Array.isArray(x)?x[1]:x)}</option>`).join('');
+const gopts=sel=>opts(S.groups.map(g=>[g.id,g.name]),sel);
+function modal(title,body,onSave,saveLabel){
+const d=$('#dlg');
+d.innerHTML=`<form method="dialog" id="mf"><div class="dh"><span>${esc(title)}</span><button type="button" class="btn ghost sm" onclick="$('#dlg').close()">إغلاق</button></div><div class="db">${body}</div><div class="df">${onSave?`<button class="btn" type="button" id="sv">${saveLabel||'حفظ'}</button>`:''}<button type="button" class="btn ghost" onclick="$('#dlg').close()">إلغاء</button></div></form>`;
+const go2=()=>{const f=$('#mf');if(!f.reportValidity())return;try{if(onSave&&onSave(new FormData(f))===false)return}catch(err){toast('حدث خطأ: '+err.message);return}d.close();render()};
+$('#mf').onsubmit=e=>{e.preventDefault();go2()};if($('#sv'))$('#sv').onclick=go2;
+d.showModal();
+}
+function ask(msg,fn,label){modal('تأكيد',`<p>${msg}</p>`,()=>{fn()},label||'نعم، متأكد')}
+function pct(a,b){return b?Math.round(a/b*100):0}
+function studentStats(sid){
+const rs=S.exams.filter(e=>e.sc&&e.sc[sid]!==undefined&&e.sc[sid]!=='').map(e=>({e,v:+e.sc[sid]}));
+const tot=rs.reduce((a,r)=>a+r.v,0),mx=rs.reduce((a,r)=>a+(+r.e.max),0);
+return {rs,avg:rs.length?pct(tot,mx):null};
+}
+const pcls=p=>p==null?'':p>=85?'good':p<50?'bad':'';
+function render(){
+$('#nav').innerHTML=TABS.map(([k,l])=>`<button aria-current="${k===tab}" onclick="go('${k}')">${l}</button>`).join('');
+$('#app').innerHTML=({home,groups,students,exams,evals,data})[tab]();
+}
+function go(t){tab=t;if(t==='groups')flt.gv='';render();scrollTo(0,0)}
+function home(){
+const last=[...S.exams].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,4);
+return `<div class="stats"><div class="stat"><b>${S.groups.length}</b><span>مجموعة</span></div><div class="stat"><b>${S.students.length}</b><span>طالب</span></div><div class="stat"><b>${S.exams.length}</b><span>امتحان</span></div></div>
+<div class="bar"><h2>المجموعات</h2><button class="btn" onclick="editGroup()">+ مجموعة جديدة</button></div>
+${S.groups.length?`<div class="grid">${S.groups.map(g=>`<div class="card" style="cursor:pointer" onclick="openGroup('${g.id}')"><h3>${esc(g.name)}</h3><p>${esc(g.grade)} <span class="tag ${g.kind==='مدرسة'?'p':''}">${esc(g.kind)}</span></p><p>${esc(g.time||'')}</p><p><b>${S.students.filter(s=>s.gid===g.id).length}</b> طالب — <span style="color:var(--pri)">افتح المجموعة</span></p></div>`).join('')}</div>`:'<div class="list"><div class="empty">ابدأ بإضافة أول مجموعة، ثم أضف الطلاب إليها.</div></div>'}
+<div class="bar"><h2>آخر الامتحانات</h2></div>
+<div class="list">${last.length?last.map(examRow).join(''):'<div class="empty">لا توجد امتحانات بعد.</div>'}</div>`;
+}
+function groupsList(){
+return `<div class="bar"><h2>المجموعات</h2><button class="btn" onclick="editGroup()">+ مجموعة جديدة</button></div>
+<div class="list">${S.groups.length?S.groups.map(g=>`<div class="row"><div class="main"><b>${esc(g.name)}</b> <span class="tag ${g.kind==='مدرسة'?'p':''}">${esc(g.kind)}</span><small>${esc(g.grade)} — ${esc(g.time||'بدون موعد')}${g.fee?' — '+esc(g.fee)+' ج':''} — ${S.students.filter(s=>s.gid===g.id).length} طالب</small></div><button class="btn sm" onclick="openGroup('${g.id}')">فتح (طلاب ودرجات)</button><button class="btn ghost sm" onclick="editGroup('${g.id}')">تعديل</button><button class="btn red sm" onclick="delGroup('${g.id}')">حذف</button></div>`).join(''):'<div class="empty">لا توجد مجموعات.</div>'}</div>`;
+}
+function editGroup(id){
+const g=grp(id)||{name:'',grade:GRADES[0],kind:KINDS[0],time:'',fee:''};
+modal(id?'تعديل المجموعة':'مجموعة جديدة',`<label>اسم المجموعة</label><input name="name" required value="${esc(g.name)}" placeholder="مثال: مجموعة السبت والثلاثاء ٤ م">
+<div class="two"><div><label>الصف</label><select name="grade">${opts(GRADES,g.grade)}</select></div><div><label>النوع</label><select name="kind">${opts(KINDS,g.kind)}</select></div></div>
+<div class="two"><div><label>الموعد</label><input name="time" value="${esc(g.time)}" placeholder="سبت وثلاثاء ٤ م"></div><div><label>سعر الشهر (ج)</label><input name="fee" type="number" min="0" value="${esc(g.fee)}"></div></div>`,
+f=>{const o={name:f.get('name').trim(),grade:f.get('grade'),kind:f.get('kind'),time:f.get('time'),fee:f.get('fee')};
+if(id)Object.assign(grp(id),o);else S.groups.push({id:uid(),...o});save();toast('تم الحفظ')});
+}
+function delGroup(id){
+ask('حذف المجموعة؟ سيبقى الطلاب بدون مجموعة.',()=>{S.groups=S.groups.filter(g=>g.id!==id);S.students.forEach(s=>{if(s.gid===id)s.gid=''});save()},'حذف');
+}
+function students(){
+const list=S.students.filter(s=>(!flt.g||s.gid===flt.g)&&(!flt.q||s.name.includes(flt.q)));
+return `<div class="bar"><h2>الطلاب (${list.length})</h2>
+<input type="search" placeholder="بحث بالاسم" value="${esc(flt.q)}" oninput="flt.q=this.value;render2()" aria-label="بحث">
+<select onchange="flt.g=this.value;render()" aria-label="تصفية بالمجموعة"><option value="">كل المجموعات</option>${gopts(flt.g)}</select>
+<button class="btn" onclick="editStudent()">+ طالب</button></div>
+<div class="list" id="slist">${studentRows(list)}</div>`;
+}
+function studentRows(list){
+return list.length?list.map(s=>{const st=studentStats(s.id);return `<div class="row"><div class="main"><b>${esc(s.name)}</b><small>${esc(gname(s.gid))}${s.phone?' — '+esc(s.phone):''}</small></div>${st.avg!=null?`<span class="pct ${pcls(st.avg)}">${st.avg}%</span>`:''}<button class="btn sm" onclick="report('${s.id}')">التقرير</button><button class="btn ghost sm" onclick="editStudent('${s.id}')">تعديل</button><button class="btn red sm" onclick="delStudent('${s.id}')">حذف</button></div>`}).join(''):'<div class="empty">لا يوجد طلاب. اضغط «+ طالب» للبدء.</div>';
+}
+function render2(){const list=S.students.filter(s=>(!flt.g||s.gid===flt.g)&&(!flt.q||s.name.includes(flt.q)));$('#slist').innerHTML=studentRows(list)}
+function editStudent(id,gid0){
+const s=S.students.find(x=>x.id===id)||{name:'',phone:'',gid:gid0||flt.g||'',note:''};
+modal(id?'تعديل الطالب':'طالب جديد',`<label>اسم الطالب</label><input name="name" required value="${esc(s.name)}">
+<label>المجموعة</label><select name="gid"><option value="">بدون مجموعة</option>${gopts(s.gid)}</select>
+<label>رقم ولي الأمر</label><input name="phone" inputmode="tel" value="${esc(s.phone)}">
+<label>ملاحظات</label><textarea name="note" rows="2">${esc(s.note)}</textarea>`,
+f=>{const o={name:f.get('name').trim(),gid:f.get('gid'),phone:f.get('phone'),note:f.get('note')};
+if(id)Object.assign(S.students.find(x=>x.id===id),o);else S.students.push({id:uid(),...o});save();toast('تم الحفظ')});
+}
+function delStudent(id){
+ask('حذف الطالب ودرجاته؟',()=>{S.students=S.students.filter(s=>s.id!==id);S.evals=S.evals.filter(e=>e.sid!==id);S.exams.forEach(e=>{if(e.sc)delete e.sc[id]});save()},'حذف');
+}
+function report(id){
+const s=S.students.find(x=>x.id===id),st=studentStats(id),g=grp(s.gid);
+const ev=S.evals.filter(e=>e.sid===id).sort((a,b)=>b.month.localeCompare(a.month));
+modal('تقرير: '+s.name,`<p><b>${esc(g?g.name:'بدون مجموعة')}</b>${g?' — '+esc(g.grade):''}</p>
+<h3>الامتحانات ${st.avg!=null?`<span class="pct ${pcls(st.avg)}">— المتوسط ${st.avg}%</span>`:''}</h3>
+${st.rs.length?`<table><tr><th>الامتحان</th><th>التاريخ</th><th>الدرجة</th></tr>${st.rs.map(r=>`<tr><td>${esc(r.e.title)}</td><td>${esc(r.e.date)}</td><td>${r.v} / ${esc(r.e.max)}</td></tr>`).join('')}</table>`:'<p class="empty">لا توجد درجات.</p>'}
+<h3>التقييم الشهري</h3>
+${ev.length?`<div class="sc"><table><tr><th>الشهر</th>${CRIT.map(c=>`<th>${c}</th>`).join('')}</tr>${ev.map(e=>`<tr><td>${esc(e.month)}</td>${e.r.map(v=>`<td>${v||'—'}/5</td>`).join('')}</tr>${e.note?`<tr><td colspan="6"><small>${esc(e.note)}</small></td></tr>`:''}`).join('')}</table></div>`:'<p class="empty">لا يوجد تقييم.</p>'}
+<p><button type="button" class="btn ghost" onclick="print()">طباعة التقرير</button></p>`,null);
+}
+function examRow(e){
+const n=e.sc?Object.values(e.sc).filter(v=>v!=='').length:0,vals=e.sc?Object.values(e.sc).filter(v=>v!=='').map(Number):[];
+const avg=vals.length?pct(vals.reduce((a,b)=>a+b,0)/vals.length,+e.max):null;
+return `<div class="row"><div class="main"><b>${esc(e.title)}</b> <span class="tag">${esc(e.type)}</span><small>${esc(gname(e.gid))} — ${esc(e.date)} — من ${esc(e.max)} — رُصدت ${n} درجة${avg!=null?' — المتوسط '+avg+'%':''}</small></div><button class="btn sm" onclick="grade('${e.id}')">رصد الدرجات</button><button class="btn ghost sm" onclick="editExam('${e.id}')">تعديل</button><button class="btn red sm" onclick="delExam('${e.id}')">حذف</button></div>`;
+}
+function exams(){
+const list=S.exams.filter(e=>!flt.eg||e.gid===flt.eg).sort((a,b)=>b.date.localeCompare(a.date));
+return `<div class="bar"><h2>الامتحانات</h2><select onchange="flt.eg=this.value;render()" aria-label="تصفية"><option value="">كل المجموعات</option>${gopts(flt.eg)}</select><button class="btn" onclick="editExam()">+ امتحان جديد</button></div>
+<div class="list">${list.length?list.map(examRow).join(''):'<div class="empty">لا توجد امتحانات. أضف امتحانًا ثم ارصد الدرجات.</div>'}</div>`;
+}
+function editExam(id,gid0){
+if(!S.groups.length&&!id){toast('أضف مجموعة أولًا');return}
+const e=S.exams.find(x=>x.id===id)||{title:'',type:ETYPES[0],gid:gid0||flt.eg||(S.groups[0]||{}).id,date:new Date().toISOString().slice(0,10),max:20};
+modal(id?'تعديل الامتحان':'امتحان جديد',`<label>العنوان</label><input name="title" required value="${esc(e.title)}" placeholder="مثال: اختبار على درس كان وأخواتها">
+<div class="two"><div><label>النوع</label><select name="type">${opts(ETYPES,e.type)}</select></div><div><label>المجموعة</label><select name="gid">${gopts(e.gid)}</select></div></div>
+<div class="two"><div><label>التاريخ</label><input type="date" name="date" required value="${esc(e.date)}"></div><div><label>الدرجة النهائية</label><input type="number" name="max" min="1" required value="${esc(e.max)}"></div></div>`,
+f=>{const o={title:f.get('title').trim(),type:f.get('type'),gid:f.get('gid'),date:f.get('date'),max:+f.get('max')};
+if(id)Object.assign(S.exams.find(x=>x.id===id),o);else S.exams.push({id:uid(),sc:{},...o});save();toast('تم الحفظ')});
+}
+function delExam(id){ask('حذف الامتحان ودرجاته؟',()=>{S.exams=S.exams.filter(e=>e.id!==id);save()},'حذف')}
+function grade(id){
+const e=S.exams.find(x=>x.id===id),st=S.students.filter(s=>s.gid===e.gid);
+if(!st.length){toast('لا يوجد طلاب في هذه المجموعة');return}
+modal('درجات: '+e.title+' (من '+e.max+')',`<table class="scores">${st.map(s=>`<tr><td>${esc(s.name)}</td><td><input type="number" name="s_${s.id}" min="0" max="${esc(e.max)}" step="0.5" value="${e.sc&&e.sc[s.id]!==undefined?esc(e.sc[s.id]):''}" aria-label="درجة ${esc(s.name)}"></td></tr>`).join('')}</table>`,
+f=>{e.sc=e.sc||{};for(const s of st){const v=f.get('s_'+s.id);if(v===''||v===null)delete e.sc[s.id];else e.sc[s.id]=Math.min(+v,e.max)}save();toast('تم رصد الدرجات')});
+}
+function evals(){
+const gid=flt.eg||(S.groups[0]||{}).id,st=S.students.filter(s=>s.gid===gid);
+return `<div class="bar"><h2>التقييم الشهري</h2><select onchange="flt.eg=this.value;render()" aria-label="المجموعة">${gopts(gid)}</select><input type="month" value="${flt.em}" onchange="flt.em=this.value;render()" aria-label="الشهر"></div>
+<p class="sub">قيّم كل طالب من ١ إلى ٥. يُحفظ تلقائيًا.</p>
+<div class="list sc ev">${st.length?`<table><tr><th>الطالب</th>${CRIT.map(c=>`<th>${c}</th>`).join('')}<th>ملاحظة</th></tr>${st.map(s=>{const e=S.evals.find(x=>x.sid===s.id&&x.month===flt.em)||{r:[0,0,0,0,0],note:''};
+return `<tr><td>${esc(s.name)}</td>${e.r.map((v,i)=>`<td><select onchange="setEv('${s.id}',${i},this.value)" aria-label="${CRIT[i]} ${esc(s.name)}"><option value="0">—</option>${[1,2,3,4,5].map(n=>`<option${n===v?' selected':''}>${n}</option>`).join('')}</select></td>`).join('')}<td><input class="note" value="${esc(e.note)}" onchange="setNote('${s.id}',this.value)" aria-label="ملاحظة ${esc(s.name)}"></td></tr>`}).join('')}</table>`:'<div class="empty">اختر مجموعة بها طلاب.</div>'}</div>`;
+}
+function evFor(sid){let e=S.evals.find(x=>x.sid===sid&&x.month===flt.em);if(!e){e={sid,month:flt.em,r:[0,0,0,0,0],note:''};S.evals.push(e)}return e}
+function setEv(sid,i,v){evFor(sid).r[i]=+v;save();toast('تم الحفظ')}
+function setNote(sid,v){evFor(sid).note=v;save();toast('تم الحفظ')}
+function data(){
+return `<div class="bar"><h2>النسخ الاحتياطي</h2></div>
+<div class="list"><div class="row"><div class="main"><b>تحميل نسخة احتياطية</b><small>البيانات محفوظة داخل هذا المتصفح فقط. حمّل نسخة بشكل دوري، وقبل تغيير الجهاز أو مسح بيانات المتصفح.</small></div><button class="btn" onclick="exportData()">تحميل</button></div>
+<div class="row"><div class="main"><b>استرجاع نسخة</b><small>يستبدل كل البيانات الحالية.</small></div><input type="file" accept=".json" onchange="importData(this)" style="width:auto"></div></div>`;
+}
+function exportData(){
+const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(S)],{type:'application/json'}));
+a.download='kurrasa-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();
+}
+function importData(inp){
+const f=inp.files[0];if(!f)return;const r=new FileReader();
+r.onload=()=>{try{const d=JSON.parse(r.result);if(!Array.isArray(d.groups)||!Array.isArray(d.students))throw 0;ask('استبدال كل البيانات الحالية؟',()=>{S=Object.assign({groups:[],students:[],exams:[],evals:[]},d);save();toast('تم الاسترجاع')},'استبدال')}catch(e){toast('الملف غير صالح')}};
+r.readAsText(f);
+}
+function openGroup(id){flt.gv=id;tab='groups';render();scrollTo(0,0)}
+function closeGroup(){flt.gv='';render()}
+function groups(){return flt.gv&&grp(flt.gv)?groupView():groupsList()}
+function quickAdd(gid){const i=$('#qa'),n=i.value.trim();if(!n){i.focus();return}S.students.push({id:uid(),name:n,gid,phone:'',note:''});save();render();$('#qa').focus()}
+function setScore(eid,sid,v){const e=S.exams.find(x=>x.id===eid);e.sc=e.sc||{};if(v==='')delete e.sc[sid];else e.sc[sid]=Math.min(Math.max(+v,0),+e.max);save();const a=studentStats(sid).avg,el=$('#av_'+sid);if(el){el.textContent=a==null?'—':a+'%';el.className='pct '+pcls(a)}toast('تم الحفظ')}
+function evalTable(st){
+return `<table><tr><th>الطالب</th>${CRIT.map(c=>`<th>${c}</th>`).join('')}<th>ملاحظة</th></tr>${st.map(s=>{const e=S.evals.find(x=>x.sid===s.id&&x.month===flt.em)||{r:[0,0,0,0,0],note:''};
+return `<tr><td>${esc(s.name)}</td>${e.r.map((v,i)=>`<td><select onchange="setEv('${s.id}',${i},this.value)" aria-label="${CRIT[i]} ${esc(s.name)}"><option value="0">—</option>${[1,2,3,4,5].map(n=>`<option${n===v?' selected':''}>${n}</option>`).join('')}</select></td>`).join('')}<td><input class="note" value="${esc(e.note)}" onchange="setNote('${s.id}',this.value)" aria-label="ملاحظة ${esc(s.name)}"></td></tr>`}).join('')}</table>`;
+}
+function groupView(){
+const g=grp(flt.gv),st=S.students.filter(s=>s.gid===g.id),ex=S.exams.filter(e=>e.gid===g.id).sort((a,b)=>a.date.localeCompare(b.date));
+flt.eg=g.id;
+const sc=st.length?`<table class="scores"><tr><th>الطالب</th>${ex.map(e=>`<th>${esc(e.title)}<br><small>من ${esc(e.max)}</small></th>`).join('')}<th>المتوسط</th><th></th></tr>${st.map(s=>{const a=studentStats(s.id).avg;return `<tr><td><b>${esc(s.name)}</b></td>${ex.map(e=>`<td><input type="number" min="0" max="${esc(e.max)}" step="0.5" value="${e.sc&&e.sc[s.id]!==undefined?esc(e.sc[s.id]):''}" onchange="setScore('${e.id}','${s.id}',this.value)" aria-label="${esc(e.title)} ${esc(s.name)}"></td>`).join('')}<td><span class="pct ${pcls(a)}" id="av_${s.id}">${a!=null?a+'%':'—'}</span></td><td style="white-space:nowrap"><button class="btn ghost sm" onclick="report('${s.id}')">التقرير</button> <button class="btn ghost sm" onclick="editStudent('${s.id}')">تعديل</button> <button class="btn red sm" onclick="delStudent('${s.id}')">حذف</button></td></tr>`}).join('')}</table>${ex.length?'':'<div class="empty">اضغط «+ امتحان جديد» وستظهر هنا خانة درجة لكل طالب.</div>'}`:'<div class="empty">أضف أسماء الطلاب من الخانة بالأعلى.</div>';
+return `<div class="bar"><button class="btn ghost sm" onclick="closeGroup()">→ كل المجموعات</button></div>
+<div class="bar"><h2>${esc(g.name)} <span class="tag ${g.kind==='مدرسة'?'p':''}">${esc(g.kind)}</span></h2></div>
+<p class="sub">${esc(g.grade)}${g.time?' — '+esc(g.time):''} — ${st.length} طالب</p>
+<div class="list" style="padding:14px 16px;margin-bottom:26px"><label style="margin-top:0">إضافة طالب للمجموعة</label><div style="display:flex;gap:8px"><input id="qa" placeholder="اكتب اسم الطالب ثم اضغط Enter" onkeydown="if(event.key==='Enter'){event.preventDefault();quickAdd('${g.id}')}"><button class="btn" style="white-space:nowrap" onclick="quickAdd('${g.id}')">إضافة</button></div><div style="margin-top:8px"><button class="btn ghost sm" onclick="bulkStudents('${g.id}')">إضافة عدة أسماء دفعة واحدة</button></div></div>
+<div class="bar"><h2 style="font-size:1.25rem">الدرجات</h2><button class="btn" onclick="editExam(undefined,'${g.id}')">+ امتحان جديد</button></div>
+<div class="list sc">${sc}</div>
+<div class="bar" style="margin-top:28px"><h2 style="font-size:1.25rem">التقييم الشهري</h2><input type="month" value="${flt.em}" onchange="flt.em=this.value;render()" aria-label="الشهر"></div>
+<div class="list sc ev">${st.length?evalTable(st):'<div class="empty">أضف طلابًا أولًا.</div>'}</div>`;
+}
+function bulkStudents(gid){
+modal('إضافة عدة طلاب','<label>اكتب اسم كل طالب في سطر</label><textarea name="names" rows="9" required placeholder="أحمد محمد&#10;سارة علي&#10;..."></textarea>',
+f=>{const n=f.get('names').split('\n').map(x=>x.trim()).filter(Boolean);n.forEach(x=>S.students.push({id:uid(),name:x,gid,phone:'',note:''}));save();toast('تمت إضافة '+n.length+' طالب')},'إضافة');
+}
+render();
+</script>
+</body>
+</html>
